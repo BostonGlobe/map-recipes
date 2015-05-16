@@ -1,0 +1,12 @@
+<!-- (BEGIN) globe graphic embed -->
+<!--[if lte IE 8]>
+    
+<![endif]-->
+<div id='globe-graphic-embed-1' style='margin: 20px 0;'></div>
+<script src='http://apps.bostonglobe.com/common/js/pym/pym-0.4.1.min.js' type='text/javascript'></script>
+<script>
+    (function() {
+		var pymParent1 = new pym.Parent('globe-graphic-embed-1', 'http://apps.bostonglobe.com/graphics/[year]/[month]/[name]/index.html', {});
+	})();
+</script>
+<!-- (END) globe graphic embed -->
