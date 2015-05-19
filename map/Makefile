@@ -12,12 +12,6 @@ shadedrelief:
 	# Make shaded relief parts from Myanmar DEM.
 	make listgeo slope hillshade color merge file='~/Desktop/TEMP/GMTED/10N090E_20101117_gmted_mea300.tif';
 
-	# Make Myanmar shapefile.
-	ogr2ogr -where 'admin="Myanmar"' output/myanmar.shp ~/Desktop/TEMP/Natural\ Earth/Cultural/10m_cultural/ne_10m_admin_0_countries.shp;
-
-	# Cut the final relief using Myanmar shapefile.
-	gdalwarp -cutline output/myanmar.shp -crop_to_cutline output/myanmar-bbox-shadedrelief.tif output/myanmar-shadedrelief.tif;
-
 listgeo:
 
 	listgeo ${file} > output/meta.txt;
@@ -46,3 +40,7 @@ merge:
 			slopeONcolor.tif; \
 		convert slopeONcolor.tif hills_gamma.tif -compose Overlay -composite hillsONslopeONcolor.tif; \
 		geotifcp -g meta.txt hillsONslopeONcolor.tif myanmar-bbox-shadedrelief.tif
+
+cutColorToMyanmarBbox:
+
+	gdalwarp -te 89.9998611 9.9998611 119.9998611 29.9998611 ~/Desktop/TEMP/Natural\ Earth/Raster/NE1_HR_LC/NE1_HR_LC.tif output/color.tif
