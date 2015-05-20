@@ -21,7 +21,11 @@ init_variables:
 # clean out directory contents
 clean:
 
-	rm -rf output/*;
+	rm -rf output;
+	mkdir output;
+
+	# create slope.txt
+	echo '0 255 255 255\n90 0 0 0' > output/slope.txt;
 
 # save DEM bounding box for later
 listgeo:
@@ -32,7 +36,7 @@ listgeo:
 slope:
 
 	gdaldem slope ${DEM} output/slope.tif -s 111120;
-	gdaldem color-relief output/slope.tif slope.txt output/slopeshade.tif;
+	gdaldem color-relief output/slope.tif output/slope.txt output/slopeshade.tif;
 
 # create hillshade from DEM
 hillshade:
