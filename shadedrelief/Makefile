@@ -1,7 +1,3 @@
-# filepaths of DEM and rasters. You can use any DEM and raster.
-DEM=~/Desktop/TEMP/GMTED/10N090E_20101117_gmted_mea300.tif
-COLOR_RASTER=~/Desktop/TEMP/Natural\ Earth/Raster/NE1_HR_LC/NE1_HR_LC.tif
-
 # e.g. 3200x1600
 DEM_SIZE=$$(identify -format "%wx%h" $(DEM))
 
@@ -62,4 +58,4 @@ merge:
 		convert slopeONcolor.tif hills_gamma.tif -compose Overlay -composite hillsONslopeONcolor.tif; \
 		geotifcp -g meta.txt hillsONslopeONcolor.tif shadedrelief.tif
 
-all: init_variables clean listgeo slope hillshade cutRasterToDEM merge
+shadedrelief: init_variables clean listgeo slope hillshade cutRasterToDEM merge
