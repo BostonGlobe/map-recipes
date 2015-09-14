@@ -47,15 +47,26 @@ cutRasterToDEM:
 # use imagemagick to stitch all the tiffs together
 merge:
 
-	cd output; \
-		convert color.tif -resize ${DEM_SIZE} color_resized.tif; \
-		convert -gamma 0.5 hills.tif hills_gamma.tif; \
-		convert \
-			slopeshade.tif -compose multiply -alpha set -channel A -evaluate set 40% \
-			color_resized.tif \
-			-layers flatten \
-			slopeONcolor.tif; \
-		convert slopeONcolor.tif hills_gamma.tif -compose Overlay -composite hillsONslopeONcolor.tif; \
-		geotifcp -g meta.txt hillsONslopeONcolor.tif shadedrelief.tif
+	# cd output; \
+	# 	convert color.tif -resize ${DEM_SIZE} color_resized.tif; \
+	# 	convert -gamma 0.5 hills.tif hills_gamma.tif; \
+	# 	convert \
+	# 		slopeshade.tif -compose multiply -alpha set -channel A -evaluate set 40% \
+	# 		color_resized.tif \
+	# 		-layers flatten \
+	# 		slopeONcolor.tif; \
+	# 	convert slopeONcolor.tif hills_gamma.tif -compose Overlay -composite hillsONslopeONcolor.tif; \
+	# 	geotifcp -g meta.txt hillsONslopeONcolor.tif shadedrelief.tif
+
+	convert output/color.tif -resize ${DEM_SIZE} output/color_resized.tif; \
+	convert -gamma 0.5 output/hills.tif output/hills_gamma.tif; \
+	convert \
+		output/slopeshade.tif -compose multiply -alpha set -channel A -evaluate set 40% \
+		output/color_resized.tif \
+		-layers flatten \
+		output/slopeONcolor.tif; \
+	convert output/slopeONcolor.tif output/hills_gamma.tif -compose Overlay -composite output/hillsONslopeONcolor.tif; \
+	geotifcp -g output/meta.txt output/hillsONslopeONcolor.tif output/shadedrelief.tif
 
 shadedrelief: init_variables clean listgeo slope hillshade cutRasterToDEM merge
+
