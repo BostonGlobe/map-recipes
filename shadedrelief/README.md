@@ -1,6 +1,6 @@
 # shadedrelief
 
-This generates a shaded relief `.tif` from a DEM and a color raster, like ![Mandalay](http://apps.bostonglobe.com/graphics/2015/05/myanmar/assets/img/map-mandalay.jpg)
+This generates a shaded relief `.tif` from a DEM and a color raster, like [![Mandalay](http://apps.bostonglobe.com/graphics/2015/05/myanmar/assets/img/map-mandalay.jpg)](http://apps.bostonglobe.com/graphics/2015/05/myanmar/part-1.html)
 
 ## Instructions
 
