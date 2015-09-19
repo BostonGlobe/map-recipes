@@ -12,3 +12,6 @@
 - Now import the data (this takes a while):
 
 `osm2pgsql -c -d osm --slim -C 12000 -k --flat-nodes flat-nodes ~/Downloads/merged.osm.pbf`
+
+# start db
+`postgres -D /usr/local/var/postgres`
